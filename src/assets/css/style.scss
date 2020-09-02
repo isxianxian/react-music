@@ -1,0 +1,35 @@
+@import "./_variable.scss";
+@import "./config.scss";
+@import "./reset.scss";
+
+//  通用的样式代码片段
+html,
+body,
+#root,
+#app {
+  height: 100%;
+}
+
+h3.tit {
+  line-height: 1.2;
+  padding-left: 10px;
+  margin-left: 5px;
+  border-left: 3px solid;
+  border-color: color("primary");
+}
+
+.black-cover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.black-cover + div {
+  position: relative;
+  z-index: 1;
+}
+.pic-cover {
+  background: url("../img/coverall.png") no-repeat;
+}

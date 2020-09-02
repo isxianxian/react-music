@@ -1,0 +1,89 @@
+/**
+*   变量css文件
+*     普通变量  $name:val
+*     对象  $name:(key:val) => 获取对象中的值 map-get(obj , key)
+*     
+*     颜色对象->文字和背景色
+*     字体对象-> 基础字体大小变量，常用比例 => 基础字体*比例=常用字体，这样以后更改基础字体就能更改字体效果\
+*            ->  常见字体大小对象 => 以后更改对象，所有都可以改变 
+*     space对象 -> margin/padding
+*     space-size对象 -> 常用的几种margin/padding值
+*     方向对象 -> 上下左右
+*             =>  通过上述对象的几种结合方式，
+*/
+
+$color: (
+  "white": #ffffff,
+  "black": #000000,
+  "gray": #dcdfe6,
+  "tit": #333,
+  "info": #888,
+  "primary": #f56c6c,
+  "main": #656363,
+  "border": rgba(0, 0, 0, 0.1),
+);
+$border-color: map-get($color, "border");
+$border-width: 1px;
+
+$base-font-size: 14px;
+$font-size: (
+  "xxs": 8px,
+  "xs": 10px,
+  "sm": 12px,
+  "md": 14px,
+  "lg": 16px,
+  "xl": 18px,
+  "xll": 20px,
+);
+$line-height: (
+  "sm": 1,
+  "md": 1.5,
+  "lg": 2,
+);
+
+$space-types: (
+  m: margin,
+  p: padding,
+);
+$space-size: (
+  0: 0px,
+  1: 5px,
+  2: 10px,
+  3: 15px,
+  4: 20px,
+);
+$direction: (
+  t: top,
+  b: bottom,
+  l: left,
+  r: right,
+);
+
+$pos: (
+  rel: relative,
+  fix: fixed,
+  abs: absolute,
+);
+
+// flex justify-content
+$jus: (
+  start: flex-start,
+  end: flex-end,
+  cen: center,
+  between: space-between,
+  around: space-around,
+);
+
+// flex align-items
+$align: (
+  str: stretch,
+  start: flex-start,
+  end: flex-end,
+  cen: center,
+);
+
+$over: (
+  hide: hidden,
+  auto: auto,
+  scroll: scroll,
+);
