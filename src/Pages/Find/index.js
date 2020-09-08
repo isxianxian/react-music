@@ -28,15 +28,16 @@ class Find extends React.Component {
   render() {
     let { songs, banners, radios, newSongs } = this.props;
     return <div className='h-100'>
-      发现页面
       {/* banner */}
-      <div className={`${style.banner} mt-4`}>
-        <Carousel dots={{ className: 'ban-dot' }}>
+      <div className={`${style.banner}`}>
+        <Carousel dots={{ className: 'ban-dot' }} >
           {
             banners.map(item => {
-              return <div key={item.targetId} className='txt-cen pos-rel'>
-                <img src={item.imageUrl} className='w-100 m-auto' style={{ maxWidth: '700px' }} />
-                <div className={`${style['ban-tip']} px-2 txt-white`} style={{ backgroundColor: item.titleColor }}>{item.typeTitle}</div>
+              return <div className={`${style['banner']} bg-primary`} key={item.targetId} >
+                <div className='txt-cen pos-rel w-100 h-100'>
+                  {/* <img src={item.imageUrl} className='w-100 h-100 m-auto' style={{ height: '140px' }} /> */}
+                  <div className={`${style['ban-tip']} px-2 txt-white`} style={{ backgroundColor: item.titleColor }}>{item.typeTitle}</div>
+                </div>
               </div>
             })
           }
@@ -52,7 +53,7 @@ class Find extends React.Component {
           {
             songs.map((item) => {
               return (
-                <Link to='' key={item.id} style={{ width: '32%' }} className='my-1'>
+                <Link to={`/songlist/${item.id}`} key={item.id} style={{ width: '32%' }} className='my-1'>
                   <div className='pos-rel'>
                     <img src={item.picUrl} className='w-100' />
                     <div className={`${style.mark} pic-cover`}>

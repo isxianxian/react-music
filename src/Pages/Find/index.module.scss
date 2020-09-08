@@ -16,11 +16,15 @@
       }
     }
   }
-  .ban-tip {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    border-radius: 5px;
+  .banner {
+    min-width: 375px;
+    height: 140px;
+    .ban-tip {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      border-radius: 5px;
+    }
   }
 }
 

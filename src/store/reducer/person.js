@@ -2,7 +2,8 @@ import * as actionTypes from '../action-types';
 let initState = {
   isLogin: false,
   loginInfo: {},
-  userPlayInfo: {}
+  userPlayInfo: {
+  }
 }
 
 let reducer = function (state = initState, action) {
@@ -24,7 +25,6 @@ let reducer = function (state = initState, action) {
       playRecord = playRecord ? playRecord.weekData : [];
       playList = playList ? playList.playlist : [];
       playDJ = playDJ ? playDJ.programs : [];
-
       userPlayInfo = { ...userPlayInfo, playRecord, playList, playDJ };
       state = { ...state, userPlayInfo };
       break;

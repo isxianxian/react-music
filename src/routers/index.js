@@ -1,5 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { Provider, KeepAlive } from 'react-keep-alive';
 
 import Find from '../Pages/Find';
 import Hot from '../Pages/Hot';
@@ -15,30 +16,43 @@ import HomeLay from '../layout/HomeLay';
 
 export default function RootRouter() {
   return <Router>
-    <Switch>
-      {/* 要记得把router传递的match，location等对象传递给下一个组件 */}
-      <Route path='/'>
-        <HomeLay>
-          <Switch>
-            <Route path='/find' component={Find}></Route>
-            <Route path='/hot' component={Hot}></Route>
-            <Route path='/person'>
-              <Person>
-                <Switch>
-                  <Route path='/person/info' component={Info}></Route>
-                  <Route path='/person/login' component={Login}></Route>
-                  <Redirect form='/person' to='/person/info'></Redirect>
-                </Switch>
-              </Person>
-            </Route>
-            <Redirect form='/' to='/person'></Redirect>
-          </Switch>
-        </HomeLay>
-      </Route>
-      <Route path='/songlist' component={SongList}></Route>
-      <Route path='/song' component={Song}></Route>
-
-    </Switch>
+    <Provider>
+      <Switch>
+        {/* 要记得把router传递的match，location等对象传递给下一个组件 */}
+        <Route path='/songlist/:id' component={SongList}></Route>
+        <Route path='/song/:id' component={Song}></Route>
+        <Route path='/'>
+          <HomeLay>
+            <Switch>
+              <Route path='/find'>
+                <KeepAlive name="Find">
+                  <Find />
+                </KeepAlive>
+              </Route>
+              <Route path='/hot' component={Hot}>
+                <KeepAlive name="Hot">
+                  <Hot />
+                </KeepAlive>
+              </Route>
+              <Route path='/person'>
+                <Person>
+                  <Switch>
+                    <Route path='/person/info'>
+                      <KeepAlive name="Personinfo">
+                        <Info />
+                      </KeepAlive>
+                    </Route>
+                    <Route path='/person/login' component={Login}></Route>
+                    <Redirect form='/person' to='/person/info'></Redirect>
+                  </Switch>
+                </Person>
+              </Route>
+              <Redirect form='/' to='/find'></Redirect>
+            </Switch>
+          </HomeLay>
+        </Route>
+      </Switch>
+    </Provider>
   </Router>
 }
 

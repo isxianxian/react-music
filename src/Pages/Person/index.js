@@ -3,6 +3,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import action from '../../store/action';
 import { connect } from 'react-redux';
+import { login } from '../../api/person';
 
 class Person extends React.Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class Person extends React.Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     let { isLogin, loginInfo, saveUserInfo, history, location: { pathname } } = nextProps;
+
     if (isLogin && pathname == '/person/login') {
       history.push('/person/info')
     }

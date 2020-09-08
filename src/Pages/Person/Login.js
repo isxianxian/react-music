@@ -12,7 +12,6 @@ class Login extends React.Component {
 
   render() {
     return <div className='h-100'>
-      注册登陆页面
       <div>
         <Form
           name="basic"

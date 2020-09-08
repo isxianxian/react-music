@@ -3,13 +3,14 @@ let initState = {
   banners: [],
   songs: [],
   radios: [],
-  newSongs: []
+  newSongs: [],
+  hots: []
 }
 
 let reducer = function (state = initState, action) {
-  switch (action.type) {
+  let { type, payload } = action;
+  switch (type) {
     case actionTypes.FIND_PAGE:
-      let { payload } = action;
       if (payload[0]) {
         let banners = payload[0].banners,
           songs = payload[1].result.slice(0, 6),
@@ -17,6 +18,10 @@ let reducer = function (state = initState, action) {
           newSongs = payload[3].result;
         state = { ...state, banners, songs, radios, newSongs };
       }
+      break;
+    case actionTypes.Hot_List:
+      let hots = payload.result.hots;
+      state = { ...state, hots };
       break;
   }
 

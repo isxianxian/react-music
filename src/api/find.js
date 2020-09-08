@@ -16,3 +16,11 @@ export let DJ = function () {
 export let NewSong = function () {
   return get('/personalized/newsong');
 }
+// 热门搜索
+export let getHot = function () {
+  return get('/search/hot')
+}
+// 歌单详情
+export let songListDetail = function (params) {
+  return get('/playlist/detail', params)
+}
